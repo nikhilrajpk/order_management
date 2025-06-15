@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Order Notification</title>
+    <style>
+        #confirm_id {
+            padding: 10px; 
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h3>New Order Details</h3>
+    <p><strong>Order ID:</strong> {{ order.id }}</p>
+    <p><strong>Customer Name:</strong> {{ order.customer_name }}</p>
+    <p><strong>Product:</strong> {{ order.product }}</p>
+    <p><strong>Quantity:</strong> {{ order.quantity }}</p>
+    <p><strong>Cost:</strong> ${{ order.product_cost }}</p>
+    <p><strong>Email:</strong> {{ order.user_email }}</p>
+    <a href="{{ confirmation_link }}" id="confirm_id">Confirm Order</a>
+    <p>Please reply to the email you received with the message: <strong>"Order confirmed with order ID {{ order.id }}"</strong> to finalize the confirmation.</p>
+</body>
+</html>

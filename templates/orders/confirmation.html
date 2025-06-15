@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed</title>
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+</head>
+<body>
+    <div class="container">
+        <h2>Order Confirmation</h2>
+        <p>Order #{{ order.id }} has been marked as Pending Confirmation.</p>
+        <p>Please reply to the email you received with the message: <strong>"Order confirmed with order ID {{ order.id }}"</strong> to finalize the confirmation.</p>
+    </div>
+</body>
+</html>
