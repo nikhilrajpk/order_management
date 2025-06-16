@@ -17,7 +17,7 @@ def place_order(request):
             subject = f'New Order #{order.id}'
             context = {
                 'order': order,
-                'confirmation_link': f'http://localhost:8000/confirm/{order.id}/'
+                'confirmation_link': f'https://54.166.101.19/confirm/{order.id}/'
             }
             html_message = render_to_string('orders/warehouse_email.html', context)
             send_mail(

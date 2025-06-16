@@ -7,7 +7,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         # Ensure only one schedule exists for 1 minute
         schedule, created = IntervalSchedule.objects.get_or_create(
-            every=1,
+            every=5,
             period=IntervalSchedule.MINUTES
         )
         # Ensure only one task exists
