@@ -5,13 +5,18 @@ class Command(BaseCommand):
     help = 'Sets up periodic task for monitoring warehouse emails'
 
     def handle(self, *args, **options):
-        schedule, created = IntervalSchedule.objects.update_or_create(
+        # Ensure only one schedule exists for 1 minute
+        schedule, created = IntervalSchedule.objects.get_or_create(
             every=1,
             period=IntervalSchedule.MINUTES
         )
+        # Ensure only one task exists
         PeriodicTask.objects.update_or_create(
-            interval=schedule,
             name='Monitor warehouse emails',
-            task='orders.tasks.monitor_warehouse_emails'
+            defaults={
+                'interval': schedule,
+                'task': 'orders.tasks.monitor_warehouse_emails',
+                'enabled': True
+            }
         )
         self.stdout.write(self.style.SUCCESS('Periodic task set up successfully'))
